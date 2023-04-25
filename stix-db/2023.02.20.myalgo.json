@@ -1,0 +1,206 @@
+{
+    "type": "bundle",
+    "id": "bundle--115ed7b5-b500-4ddc-8c9b-ec0ec8dd758c",
+    "objects": [
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "MyAlgo Attacker",
+            "description": "('On February 20, 2023 and ongoing 2000+ Algorand network users and projects like ', 'Algodex, Lofty, AlgoCasino, etc. lost $9.2M+ due to private key compromises.')"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--d94c7234-a04b-4909-9c7c-632984d90510",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "Potentially compromised CDN API key used.",
+            "extensions": {
+                "extension-definition--59cde1e5-2ce1-4732-a09d-596f401ba65b": {
+                    "extension_type": "toplevel-property-extension"
+                }
+            },
+            "x_defi_taxonomy_incident_type": "Compromised private key / wallet",
+            "x_defi_taxonomy_layer": "AUX",
+            "x_defi_taxonomy_incident_cause": "Faulty Operation"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--6366034f-92f4-4a04-b5c6-3569264dbf53",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
+            "target_ref": "attack-pattern--d94c7234-a04b-4909-9c7c-632984d90510"
+        },
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--86aa3bc6-52f2-4552-9805-4867b29142cb",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "MyAlgo",
+            "description": "Wallet of Algorand network",
+            "identity_class": "organization",
+            "sectors": [
+                "financial-services"
+            ],
+            "external_references": [
+                {
+                    "source_name": "Algorand Wallet",
+                    "url": "https://wallet.myalgo.com/home"
+                },
+                {
+                    "source_name": "Twitter",
+                    "url": "https://twitter.com/myalgo_"
+                }
+            ]
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--088f256d-77e6-4e4d-893f-a92b60f10826",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "targets",
+            "source_ref": "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
+            "target_ref": "identity--86aa3bc6-52f2-4552-9805-4867b29142cb"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--ee99634a-f362-4b3d-8bcc-71c02670ae6b",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "targets",
+            "source_ref": "attack-pattern--d94c7234-a04b-4909-9c7c-632984d90510",
+            "target_ref": "identity--86aa3bc6-52f2-4552-9805-4867b29142cb"
+        },
+        {
+            "type": "report",
+            "spec_version": "2.1",
+            "id": "report--64c0360b-868b-44cf-add8-8d9b4eefa12c",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "MyAlgo 2023.02.20",
+            "description": "('On February 20, 2023 and ongoing 2000+ Algorand network users and projects like ', 'Algodex, Lofty, AlgoCasino, etc. lost $9.2M+ due to private key compromises.')",
+            "report_types": [
+                "threat-actor",
+                "attack-pattern"
+            ],
+            "published": "2023-02-20T00:00:00Z",
+            "object_refs": [
+                "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
+                "identity--86aa3bc6-52f2-4552-9805-4867b29142cb"
+            ],
+            "external_references": [
+                {
+                    "source_name": "Twitter",
+                    "url": "https://twitter.com/myalgo_/status/1649427788816842752"
+                },
+                {
+                    "source_name": "Halborn",
+                    "url": "https://github.com/HalbornSecurity/PublicReports/blob/master/Incident%20Reports/RandLabs_MyAlgo_Wallet_Executive_Summary_Halborn%20.pdf"
+                }
+            ],
+            "extensions": {
+                "extension-definition--393acb6c-fe64-42b5-92d5-a8ec243c4876": {
+                    "extension_type": "toplevel-property-extension"
+                }
+            },
+            "x_defi_estimated_loss_usd": 9200000
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--1d9840c1-5ea9-41af-8e7d-7b773d2c680b",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "Attackers abused CDN for man-in-the-middle attack on http://wallet(.)myalgo(.)com webapp.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--9d0d1c7c-110c-48ae-9a5c-982fd9212419",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "Potentially compromised CDN API key used.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--b4c05a65-8a4c-4c37-9300-f5eab1ba7bdf",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "Unclear how API key obtained.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--eca97bfa-89d1-4311-b1fa-e45d31bf25bb",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "No evidence of MyAlgo codebase exploitation or vulnerability.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--2fd0935f-d40c-4503-9c0f-3f73e86da3d9",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "No evidence of CDN user account compromise.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--45c54673-0323-47ca-a5d5-effecb0eacf6",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "CDN audit logs lack evidence of key creation for the attack.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--b7338245-2389-4e51-9ea0-d6d035d66954",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "Logs cover 18 months; impacted account 19 months old, used only 6 months ago.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        },
+        {
+            "type": "note",
+            "spec_version": "2.1",
+            "id": "note--bfe8506b-0430-4800-86c0-be2c64c557c8",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "content": "Malicious worker uploaded on Jan 21st, attack lasted until mid-Feb with new MyAlgo version release.",
+            "object_refs": [
+                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,277 @@
+{
+    "type": "bundle",
+    "id": "bundle--b325939a-d61b-47e8-8ddb-73721285e1e2",
+    "objects": [
+        {
+            "type": "threat-actor",
+            "spec_version": "2.1",
+            "id": "threat-actor--64086725-6501-494e-a3c4-fe89646ba469",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "Bo Shen Attacker",
+            "description": "A total of 42M worth of crypto assets,    including 38M in USDC were stolen from Bo Shen's    personal wallet in the early morning of November 10 EST."
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--0c9b03d2-6de0-4344-8413-4415079f7a35",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "0x66f62574ab04989737228d18c3624f7fc1edae14",
+            "description": "Bo Shen Attacker",
+            "pattern": "[x-defi-address:value = '0x66f62574ab04989737228d18c3624f7fc1edae14' AND x-defi-address:blockchain = 'ethereum']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2023-04-19T00:00:00Z"
+        },
+        {
+            "type": "indicator",
+            "spec_version": "2.1",
+            "id": "indicator--ea196f0e-9a8e-4b5b-9918-59f99e335b2d",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "0x24b93eed37e6ffe948a9bdf365d750b52adcbc2e",
+            "description": "Bo Shen Attacker",
+            "pattern": "[x-defi-address:value = '0x24b93eed37e6ffe948a9bdf365d750b52adcbc2e' AND x-defi-address:blockchain = 'ethereum']",
+            "pattern_type": "stix",
+            "pattern_version": "2.1",
+            "valid_from": "2023-04-19T00:00:00Z"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--8c1ba7ba-97aa-4271-9682-77f86e9c3b8e",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--0c9b03d2-6de0-4344-8413-4415079f7a35",
+            "target_ref": "threat-actor--64086725-6501-494e-a3c4-fe89646ba469"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--56526491-6830-4e61-9e79-fae45dff2d8e",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "indicates",
+            "source_ref": "indicator--ea196f0e-9a8e-4b5b-9918-59f99e335b2d",
+            "target_ref": "threat-actor--64086725-6501-494e-a3c4-fe89646ba469"
+        },
+        {
+            "type": "attack-pattern",
+            "spec_version": "2.1",
+            "id": "attack-pattern--5e38df68-a971-4b63-a97a-9c6b4d0d72f3",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "Mnemonic words compromise",
+            "extensions": {
+                "extension-definition--59cde1e5-2ce1-4732-a09d-596f401ba65b": {
+                    "extension_type": "toplevel-property-extension"
+                }
+            },
+            "x_defi_taxonomy_incident_cause": "Faulty Operation",
+            "x_defi_taxonomy_incident_type": "Compromised private key / wallet",
+            "x_defi_taxonomy_layer": "AUX"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--e29836e7-a892-474d-8bd4-aae8d38ddcce",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "uses",
+            "source_ref": "threat-actor--64086725-6501-494e-a3c4-fe89646ba469",
+            "target_ref": "attack-pattern--5e38df68-a971-4b63-a97a-9c6b4d0d72f3"
+        },
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "Bo Shen",
+            "description": "Bo Shen. Fenbushi Capital @fenbushi",
+            "identity_class": "individual",
+            "sectors": [
+                "financial-services"
+            ],
+            "external_references": [
+                {
+                    "source_name": "Twitter",
+                    "url": "https://twitter.com/boshen1011/"
+                }
+            ]
+        },
+        {
+            "type": "x-defi-address",
+            "spec_version": "2.1",
+            "id": "x-defi-address--2ed77eb8-f903-42e5-980c-0825bc89e2a2",
+            "name": "0x6be85603322df6dc66163ef5f82a9c6ffbc5e894",
+            "description": "Bo Shen address",
+            "created": "2023-04-19T00:00:00Z",
+            "modified": "2023-04-19T00:00:00Z",
+            "blockchain": "ethereum",
+            "value": "0x6be85603322df6dc66163ef5f82a9c6ffbc5e894"
+        },
+        {
+            "type": "x-defi-address",
+            "spec_version": "2.1",
+            "id": "x-defi-address--1d5b6aa0-790e-41da-b03b-b030203f2a5d",
+            "name": "TJLBmmUb5TcFFXTLzuuaKU96uTg5Sjn1yD22",
+            "description": "Bo Shen address",
+            "created": "2023-04-19T00:00:00Z",
+            "modified": "2023-04-19T00:00:00Z",
+            "blockchain": "tron",
+            "value": "TJLBmmUb5TcFFXTLzuuaKU96uTg5Sjn1yD22"
+        },
+        {
+            "type": "x-defi-address",
+            "spec_version": "2.1",
+            "id": "x-defi-address--2d800a3b-c664-43d0-b7c9-7a77c370ad15",
+            "name": "bc1qg3mnvn8saea50js7nzkhm8k054mpwqmcuq3de5",
+            "description": "Bo Shen address",
+            "created": "2023-04-19T00:00:00Z",
+            "modified": "2023-04-19T00:00:00Z",
+            "blockchain": "bitcoin",
+            "value": "bc1qg3mnvn8saea50js7nzkhm8k054mpwqmcuq3de5"
+        },
+        {
+            "type": "x-defi-address",
+            "spec_version": "2.1",
+            "id": "x-defi-address--7c73b5ba-9f69-4aa4-9050-0ec02a96b49f",
+            "name": "1ECNeZyiHgqJmv42i3pkWY48xiXy7KukTG",
+            "description": "Bo Shen address",
+            "created": "2023-04-19T00:00:00Z",
+            "modified": "2023-04-19T00:00:00Z",
+            "blockchain": "bitcoin",
+            "value": "1ECNeZyiHgqJmv42i3pkWY48xiXy7KukTG"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--4db22e53-c41f-4d10-b0e0-cef8a3995297",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "uses",
+            "source_ref": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3",
+            "target_ref": "x-defi-address--2ed77eb8-f903-42e5-980c-0825bc89e2a2"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--29a92ac4-c29e-4224-8d70-4377b8d4a9ed",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "uses",
+            "source_ref": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3",
+            "target_ref": "x-defi-address--1d5b6aa0-790e-41da-b03b-b030203f2a5d"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--ba0f0b20-c060-4d3a-b14c-5b27abf8a57b",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "uses",
+            "source_ref": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3",
+            "target_ref": "x-defi-address--2d800a3b-c664-43d0-b7c9-7a77c370ad15"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--14b5a264-a795-4843-abd6-9bd6c7bb0bca",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "uses",
+            "source_ref": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3",
+            "target_ref": "x-defi-address--7c73b5ba-9f69-4aa4-9050-0ec02a96b49f"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--1f13e9fc-5a04-4d9b-97fe-5842205d2770",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "targets",
+            "source_ref": "threat-actor--64086725-6501-494e-a3c4-fe89646ba469",
+            "target_ref": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3"
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--63f86b38-be76-4d17-b9da-d6a7383d81be",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "targets",
+            "source_ref": "attack-pattern--5e38df68-a971-4b63-a97a-9c6b4d0d72f3",
+            "target_ref": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3"
+        },
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--f7095445-f820-4580-8ae1-6b2c4996e4c0",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "Trust Wallet",
+            "description": "Cryptocurrency Wallet",
+            "identity_class": "system",
+            "sectors": [
+                "financial-services"
+            ],
+            "external_references": [
+                {
+                    "source_name": "Trust Wallet",
+                    "url": "https://trustwallet.com/"
+                }
+            ]
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--fbd1baea-9a5c-43e3-8ef7-80b0826fac92",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "relationship_type": "uses",
+            "source_ref": "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3",
+            "target_ref": "identity--f7095445-f820-4580-8ae1-6b2c4996e4c0"
+        },
+        {
+            "type": "report",
+            "spec_version": "2.1",
+            "id": "report--22cfef4d-a39f-4c28-9b6e-28a33e3f4506",
+            "created": "2023-04-19T00:00:00.000Z",
+            "modified": "2023-04-19T00:00:00.000Z",
+            "name": "Bo Shen 22.11.22",
+            "description": "A total of 42M worth of crypto assets,    including 38M in USDC were stolen from Bo Shen's    personal wallet in the early morning of November 10 EST.",
+            "report_types": [
+                "threat-actor",
+                "attack-pattern"
+            ],
+            "published": "2022-11-22T00:00:00Z",
+            "object_refs": [
+                "threat-actor--64086725-6501-494e-a3c4-fe89646ba469",
+                "identity--9f9e9de1-6031-40cd-aff9-8158491d8ee3"
+            ],
+            "external_references": [
+                {
+                    "source_name": "",
+                    "url": "https://twitter.com/boshen1011/status/1595266905035644929"
+                },
+                {
+                    "source_name": "",
+                    "url": "https://twitter.com/SlowMist_Team/status/1595265080752766976"
+                },
+                {
+                    "source_name": "Decrypt",
+                    "url": "https://decrypt.co/115420/fenbushi-founder-bo-shen-loses-42m-stablecoins-bitcoin-ethereum-hackers"
+                }
+            ],
+            "extensions": {
+                "extension-definition--393acb6c-fe64-42b5-92d5-a8ec243c4876": {
+                    "extension_type": "toplevel-property-extension"
+                }
+            },
+            "x_defi_estimated_loss_usd": 42000000
+        }
+    ]
+}
