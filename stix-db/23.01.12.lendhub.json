@@ -1,11 +1,11 @@
 {
     "type": "bundle",
-    "id": "bundle--aed2f9d0-4b22-4e76-b0f2-dbe08313ff1f",
+    "id": "bundle--cc64ae35-29ac-4d3e-a455-adcea9a550be",
     "objects": [
         {
             "type": "threat-actor",
             "spec_version": "2.1",
-            "id": "threat-actor--d9787f31-37a6-4efc-97e1-611462dbf669",
+            "id": "threat-actor--1860439b-5866-46cc-9ccc-c4cfa9cfb9f2",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "LendHub Attacker",
@@ -14,7 +14,7 @@
         {
             "type": "indicator",
             "spec_version": "2.1",
-            "id": "indicator--33a7a810-8ce9-49ae-95d7-6bdff882af8f",
+            "id": "indicator--5a894bf7-3e1d-4c1d-a08a-b6b35e6e0a14",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "0x9d0163e76bbcf776001e639d65f573949a53ab03",
@@ -27,17 +27,17 @@
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--1ecf9ad8-bca6-4ad8-8897-936f53fbdd4b",
+            "id": "relationship--f7f616d4-1eee-4351-96a1-6e142f7bc5fa",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--33a7a810-8ce9-49ae-95d7-6bdff882af8f",
-            "target_ref": "threat-actor--d9787f31-37a6-4efc-97e1-611462dbf669"
+            "source_ref": "indicator--5a894bf7-3e1d-4c1d-a08a-b6b35e6e0a14",
+            "target_ref": "threat-actor--1860439b-5866-46cc-9ccc-c4cfa9cfb9f2"
         },
         {
             "type": "attack-pattern",
             "spec_version": "2.1",
-            "id": "attack-pattern--a34ebc0a-8188-4992-8aed-f25c9a0f38a1",
+            "id": "attack-pattern--f2a45ba5-ddc5-4480-9da8-a8450b6672a6",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "Deprecated token contract live",
@@ -46,24 +46,24 @@
                     "extension_type": "toplevel-property-extension"
                 }
             },
+            "x_defi_taxonomy_incident_type": "Other unsafe DeFi protocol dependency",
             "x_defi_taxonomy_layer": "PRO",
-            "x_defi_taxonomy_incident_cause": "Unsafe dependency",
-            "x_defi_taxonomy_incident_type": "Other unsafe DeFi protocol dependency"
+            "x_defi_taxonomy_incident_cause": "Unsafe dependency"
         },
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--701a9ce7-8241-4b1d-9740-28d10d9157d6",
+            "id": "relationship--9682e09b-5e76-481e-b899-847d1c8e7e00",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "uses",
-            "source_ref": "threat-actor--d9787f31-37a6-4efc-97e1-611462dbf669",
-            "target_ref": "attack-pattern--a34ebc0a-8188-4992-8aed-f25c9a0f38a1"
+            "source_ref": "threat-actor--1860439b-5866-46cc-9ccc-c4cfa9cfb9f2",
+            "target_ref": "attack-pattern--f2a45ba5-ddc5-4480-9da8-a8450b6672a6"
         },
         {
             "type": "identity",
             "spec_version": "2.1",
-            "id": "identity--8dc0a494-f776-43f4-a0c7-29a1cb92bb39",
+            "id": "identity--4ef0f2e1-344a-4386-8132-6b34eae05515",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "LendHub",
@@ -86,27 +86,27 @@
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--7758ae6f-0de2-41a5-a1fd-5a9ebc3318ab",
+            "id": "relationship--3c752e59-4c50-43ec-b21e-9ab9e2ceff8e",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "targets",
-            "source_ref": "threat-actor--d9787f31-37a6-4efc-97e1-611462dbf669",
-            "target_ref": "identity--8dc0a494-f776-43f4-a0c7-29a1cb92bb39"
+            "source_ref": "threat-actor--1860439b-5866-46cc-9ccc-c4cfa9cfb9f2",
+            "target_ref": "identity--4ef0f2e1-344a-4386-8132-6b34eae05515"
         },
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--6d6e3c64-1405-4a4e-a81a-42c5dd1b84d4",
+            "id": "relationship--adcc9d6f-0db9-4040-a6ee-04475e447e16",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "targets",
-            "source_ref": "attack-pattern--a34ebc0a-8188-4992-8aed-f25c9a0f38a1",
-            "target_ref": "identity--8dc0a494-f776-43f4-a0c7-29a1cb92bb39"
+            "source_ref": "attack-pattern--f2a45ba5-ddc5-4480-9da8-a8450b6672a6",
+            "target_ref": "identity--4ef0f2e1-344a-4386-8132-6b34eae05515"
         },
         {
             "type": "report",
             "spec_version": "2.1",
-            "id": "report--f1847542-9ee0-4586-86fa-b90bdb47f42b",
+            "id": "report--bdea43ea-2803-43b3-aa75-75aee7da0954",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "LendHub 2023.01.12",
@@ -117,8 +117,8 @@
             ],
             "published": "2023-01-12T00:00:00Z",
             "object_refs": [
-                "threat-actor--d9787f31-37a6-4efc-97e1-611462dbf669",
-                "identity--8dc0a494-f776-43f4-a0c7-29a1cb92bb39"
+                "threat-actor--1860439b-5866-46cc-9ccc-c4cfa9cfb9f2",
+                "identity--4ef0f2e1-344a-4386-8132-6b34eae05515"
             ],
             "external_references": [
                 {
@@ -140,45 +140,45 @@
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--ce9a794a-04fe-4019-9fa1-4eaaee948427",
+            "id": "note--90c07aa9-d6cf-44fc-a4f3-4def6201a216",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "The attack was only possible because two competing versions of the same token were available on the market.",
             "object_refs": [
-                "report--f1847542-9ee0-4586-86fa-b90bdb47f42b"
+                "report--bdea43ea-2803-43b3-aa75-75aee7da0954"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--e482e239-1ab7-4da2-802d-0f12e7fb6785",
+            "id": "note--3b473cf0-69f8-4c0f-b1e8-b4d08625dee8",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Specifically the presence of two lBSV cTokens, one of which had been phased out but unfortunately, was not removed from the market entirely.",
             "object_refs": [
-                "report--f1847542-9ee0-4586-86fa-b90bdb47f42b"
+                "report--bdea43ea-2803-43b3-aa75-75aee7da0954"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--7f73d7b1-39d9-4a82-97ea-c1b26771306f",
+            "id": "note--a362ef10-4656-4241-a96b-801eca31b10e",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "This created a discrepancy between the old and new lBSV, with different Comptroller contracts but same pricing in the market, causing a disconnect in the calculation of liabilities between the old and new markets.",
             "object_refs": [
-                "report--f1847542-9ee0-4586-86fa-b90bdb47f42b"
+                "report--bdea43ea-2803-43b3-aa75-75aee7da0954"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--325bb9eb-b400-4fa1-9bfc-e7d95e78d1e1",
+            "id": "note--4bf3150e-7b58-4d65-9127-6a644009fd5e",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "The LendHub hack demonstrates the importance of a clear, comprehensive process for updating smart contracts on the blockchain.",
             "object_refs": [
-                "report--f1847542-9ee0-4586-86fa-b90bdb47f42b"
+                "report--bdea43ea-2803-43b3-aa75-75aee7da0954"
             ]
         }
     ]

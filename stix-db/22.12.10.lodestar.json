@@ -1,11 +1,11 @@
 {
     "type": "bundle",
-    "id": "bundle--cb66ee2a-aeb9-4607-a9ff-65f1a78352fc",
+    "id": "bundle--ef093351-cd39-4a14-b6b4-397c93b32ee1",
     "objects": [
         {
             "type": "threat-actor",
             "spec_version": "2.1",
-            "id": "threat-actor--64766801-9700-414c-a441-59e1569462de",
+            "id": "threat-actor--5ea79f36-a64a-4dcb-a545-d24552043865",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "Lodestar Attacker",
@@ -14,7 +14,7 @@
         {
             "type": "indicator",
             "spec_version": "2.1",
-            "id": "indicator--5ffbe5fc-1b2b-4e09-8430-979d69d77395",
+            "id": "indicator--e39f6085-dc4a-4993-a0df-b086903b2839",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "0xc29d94386ff784006ff8461c170d1953cc9e2b5c",
@@ -27,17 +27,17 @@
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--af617998-d9bb-4cca-8d65-d9749c0f1923",
+            "id": "relationship--81281c94-7107-40cd-93a8-d61f782e54ee",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--5ffbe5fc-1b2b-4e09-8430-979d69d77395",
-            "target_ref": "threat-actor--64766801-9700-414c-a441-59e1569462de"
+            "source_ref": "indicator--e39f6085-dc4a-4993-a0df-b086903b2839",
+            "target_ref": "threat-actor--5ea79f36-a64a-4dcb-a545-d24552043865"
         },
         {
             "type": "indicator",
             "spec_version": "2.1",
-            "id": "indicator--5f1a58c1-1ad6-4f8f-ad3a-b5337e37e4c1",
+            "id": "indicator--cd499dbd-d14e-435b-985e-5b092c7f32f2",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "0xb50f58d50e30dfdaad01b1c6bcc4ccb0db55db13",
@@ -50,17 +50,17 @@
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--9669c1be-9d63-4897-967b-d9e9063073cb",
+            "id": "relationship--0e9d9bb1-86a4-43ce-b179-a3e169c26211",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--5f1a58c1-1ad6-4f8f-ad3a-b5337e37e4c1",
-            "target_ref": "threat-actor--64766801-9700-414c-a441-59e1569462de"
+            "source_ref": "indicator--cd499dbd-d14e-435b-985e-5b092c7f32f2",
+            "target_ref": "threat-actor--5ea79f36-a64a-4dcb-a545-d24552043865"
         },
         {
             "type": "attack-pattern",
             "spec_version": "2.1",
-            "id": "attack-pattern--24620177-c514-4e90-a13b-b16178aa3db7",
+            "id": "attack-pattern--c92b38dd-4f64-4ddd-be11-78a8ceae9608",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "Price oracle manipulation",
@@ -69,24 +69,24 @@
                     "extension_type": "toplevel-property-extension"
                 }
             },
+            "x_defi_taxonomy_incident_cause": "Unsafe dependency",
             "x_defi_taxonomy_incident_type": "On-chain oracle manipulation",
-            "x_defi_taxonomy_layer": "AUX",
-            "x_defi_taxonomy_incident_cause": "Unsafe dependency"
+            "x_defi_taxonomy_layer": "AUX"
         },
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--513dd426-6036-4a25-bf54-f0fefaa4dc8f",
+            "id": "relationship--bde08fde-d4d9-4d04-aa78-f6d2805b5ddd",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "uses",
-            "source_ref": "threat-actor--64766801-9700-414c-a441-59e1569462de",
-            "target_ref": "attack-pattern--24620177-c514-4e90-a13b-b16178aa3db7"
+            "source_ref": "threat-actor--5ea79f36-a64a-4dcb-a545-d24552043865",
+            "target_ref": "attack-pattern--c92b38dd-4f64-4ddd-be11-78a8ceae9608"
         },
         {
             "type": "identity",
             "spec_version": "2.1",
-            "id": "identity--2c233a36-b1e2-4c56-ad72-e56a34a87d24",
+            "id": "identity--67e1cd79-517c-46f0-8575-a3cb1d94a6ab",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "Lodestar",
@@ -105,27 +105,27 @@
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--f0e08825-dfcd-4a86-85bc-80e36c7fff47",
+            "id": "relationship--dd58e3f0-812e-4b8d-b212-b4fddf11b82e",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "targets",
-            "source_ref": "threat-actor--64766801-9700-414c-a441-59e1569462de",
-            "target_ref": "identity--2c233a36-b1e2-4c56-ad72-e56a34a87d24"
+            "source_ref": "threat-actor--5ea79f36-a64a-4dcb-a545-d24552043865",
+            "target_ref": "identity--67e1cd79-517c-46f0-8575-a3cb1d94a6ab"
         },
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--a5e7148c-2636-4356-85b6-c120bc6ffb4a",
+            "id": "relationship--de16434f-7fbf-40ae-b4e5-99a037bd87ff",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "targets",
-            "source_ref": "attack-pattern--24620177-c514-4e90-a13b-b16178aa3db7",
-            "target_ref": "identity--2c233a36-b1e2-4c56-ad72-e56a34a87d24"
+            "source_ref": "attack-pattern--c92b38dd-4f64-4ddd-be11-78a8ceae9608",
+            "target_ref": "identity--67e1cd79-517c-46f0-8575-a3cb1d94a6ab"
         },
         {
             "type": "report",
             "spec_version": "2.1",
-            "id": "report--83345ae1-4941-4097-8506-79d532a53c3a",
+            "id": "report--53706aba-9747-456a-86f8-bcc0bd80bde6",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "Lodestar 22.12.10",
@@ -136,8 +136,8 @@
             ],
             "published": "2022-12-10T00:00:00Z",
             "object_refs": [
-                "threat-actor--64766801-9700-414c-a441-59e1569462de",
-                "identity--2c233a36-b1e2-4c56-ad72-e56a34a87d24"
+                "threat-actor--5ea79f36-a64a-4dcb-a545-d24552043865",
+                "identity--67e1cd79-517c-46f0-8575-a3cb1d94a6ab"
             ],
             "external_references": [
                 {
@@ -175,34 +175,34 @@
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--868958f2-9977-4aab-98c7-8475f57587c8",
+            "id": "note--bf287105-ce7d-4896-ac05-77d83bd9435b",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Using flash loans, the attacker manipulated the plvGLP price    reported by Lodestar\u2019s GLPOracle contract,    allowing them to \u201cborrow\u201d all the funds supplied on the platform.",
             "object_refs": [
-                "report--83345ae1-4941-4097-8506-79d532a53c3a"
+                "report--53706aba-9747-456a-86f8-bcc0bd80bde6"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--8cbd666d-2e79-4580-be84-2aca076b82d1",
+            "id": "note--91e638da-dfbc-4cba-9cdb-076a51b25f17",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "The GLPOracle did not properly take into account the impact of a user    calling donate() on the GlpDepositor contract, which inflates the    assets of the GlpDepositor contract, and therefore the oracle-delivered    price of the plvGLP token.",
             "object_refs": [
-                "report--83345ae1-4941-4097-8506-79d532a53c3a"
+                "report--53706aba-9747-456a-86f8-bcc0bd80bde6"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--974e108e-359b-46f5-8e57-8487f66ee2d5",
+            "id": "note--b336b007-9e1f-4685-a166-48a6001c8277",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Attack Summary\n    In this case, the attack can be summarized as follows:\n      1. Attacker places a large amount of USDC into Lodestar\n      2. Attacker borrows plsGLP (longtail - high risk asset)\n      3. Attacker lends plsGLP and receives iplsGLP\n      4. Steps 2 and 3 are repeated\n      5. The key issue is that the oracle price of plsGLP is manipulatable - Oracles\n      6. The higher the value of plsGLP the higher the profit is able to be extracted.\n      7. Further the higher the exchange rate of plsGLP to GLP the larger the redemption is possible\n      8. The price of plsGLP was then pushed up by the attacker and they were able to borrow the remaining assets:\n",
             "object_refs": [
-                "report--83345ae1-4941-4097-8506-79d532a53c3a"
+                "report--53706aba-9747-456a-86f8-bcc0bd80bde6"
             ]
         }
     ]

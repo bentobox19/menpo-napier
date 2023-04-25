@@ -1,11 +1,11 @@
 {
     "type": "bundle",
-    "id": "bundle--115ed7b5-b500-4ddc-8c9b-ec0ec8dd758c",
+    "id": "bundle--427f428c-a4ac-4177-a05b-f92dcf2c4b7a",
     "objects": [
         {
             "type": "threat-actor",
             "spec_version": "2.1",
-            "id": "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
+            "id": "threat-actor--b64a0304-46a8-48a8-81b8-6c0fbaa6e06d",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "MyAlgo Attacker",
@@ -14,7 +14,7 @@
         {
             "type": "attack-pattern",
             "spec_version": "2.1",
-            "id": "attack-pattern--d94c7234-a04b-4909-9c7c-632984d90510",
+            "id": "attack-pattern--242fc1c1-8c5a-4d4f-b2f3-5b8195c7c1ab",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "Potentially compromised CDN API key used.",
@@ -23,24 +23,24 @@
                     "extension_type": "toplevel-property-extension"
                 }
             },
-            "x_defi_taxonomy_incident_type": "Compromised private key / wallet",
             "x_defi_taxonomy_layer": "AUX",
+            "x_defi_taxonomy_incident_type": "Compromised private key / wallet",
             "x_defi_taxonomy_incident_cause": "Faulty Operation"
         },
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--6366034f-92f4-4a04-b5c6-3569264dbf53",
+            "id": "relationship--8a37f2cb-32be-43c8-8766-26c7bb2dfdb4",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "uses",
-            "source_ref": "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
-            "target_ref": "attack-pattern--d94c7234-a04b-4909-9c7c-632984d90510"
+            "source_ref": "threat-actor--b64a0304-46a8-48a8-81b8-6c0fbaa6e06d",
+            "target_ref": "attack-pattern--242fc1c1-8c5a-4d4f-b2f3-5b8195c7c1ab"
         },
         {
             "type": "identity",
             "spec_version": "2.1",
-            "id": "identity--86aa3bc6-52f2-4552-9805-4867b29142cb",
+            "id": "identity--0761be47-df8d-46b2-b63d-5b4c1f72314b",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "MyAlgo",
@@ -63,27 +63,27 @@
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--088f256d-77e6-4e4d-893f-a92b60f10826",
+            "id": "relationship--0f8c22c1-44f5-4d0d-967f-cc00bf4c7a09",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "targets",
-            "source_ref": "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
-            "target_ref": "identity--86aa3bc6-52f2-4552-9805-4867b29142cb"
+            "source_ref": "threat-actor--b64a0304-46a8-48a8-81b8-6c0fbaa6e06d",
+            "target_ref": "identity--0761be47-df8d-46b2-b63d-5b4c1f72314b"
         },
         {
             "type": "relationship",
             "spec_version": "2.1",
-            "id": "relationship--ee99634a-f362-4b3d-8bcc-71c02670ae6b",
+            "id": "relationship--1b58db3e-2029-4858-b541-ed5df6a6618c",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "relationship_type": "targets",
-            "source_ref": "attack-pattern--d94c7234-a04b-4909-9c7c-632984d90510",
-            "target_ref": "identity--86aa3bc6-52f2-4552-9805-4867b29142cb"
+            "source_ref": "attack-pattern--242fc1c1-8c5a-4d4f-b2f3-5b8195c7c1ab",
+            "target_ref": "identity--0761be47-df8d-46b2-b63d-5b4c1f72314b"
         },
         {
             "type": "report",
             "spec_version": "2.1",
-            "id": "report--64c0360b-868b-44cf-add8-8d9b4eefa12c",
+            "id": "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "name": "MyAlgo 2023.02.20",
@@ -94,8 +94,8 @@
             ],
             "published": "2023-02-20T00:00:00Z",
             "object_refs": [
-                "threat-actor--615154bb-9a97-4e59-a8c6-f8aedf63ed9d",
-                "identity--86aa3bc6-52f2-4552-9805-4867b29142cb"
+                "threat-actor--b64a0304-46a8-48a8-81b8-6c0fbaa6e06d",
+                "identity--0761be47-df8d-46b2-b63d-5b4c1f72314b"
             ],
             "external_references": [
                 {
@@ -117,89 +117,89 @@
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--1d9840c1-5ea9-41af-8e7d-7b773d2c680b",
+            "id": "note--4be4be5b-e79f-4754-a6d0-a50f6c4c3155",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Attackers abused CDN for man-in-the-middle attack on http://wallet(.)myalgo(.)com webapp.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--9d0d1c7c-110c-48ae-9a5c-982fd9212419",
+            "id": "note--ee8b7038-8eeb-494c-826e-015a5580e2fd",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Potentially compromised CDN API key used.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--b4c05a65-8a4c-4c37-9300-f5eab1ba7bdf",
+            "id": "note--93a00102-b105-4352-b2e1-35676177797f",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Unclear how API key obtained.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--eca97bfa-89d1-4311-b1fa-e45d31bf25bb",
+            "id": "note--ad0b22ff-a381-45f2-b9b1-156b8888763e",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "No evidence of MyAlgo codebase exploitation or vulnerability.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--2fd0935f-d40c-4503-9c0f-3f73e86da3d9",
+            "id": "note--430b6c4d-a330-4167-a52a-5b59aed11836",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "No evidence of CDN user account compromise.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--45c54673-0323-47ca-a5d5-effecb0eacf6",
+            "id": "note--47c9dc32-2991-44fe-b210-c8c2c8cd2469",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "CDN audit logs lack evidence of key creation for the attack.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--b7338245-2389-4e51-9ea0-d6d035d66954",
+            "id": "note--e75fa8b0-f141-4c6f-9175-d11f8a4ab763",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Logs cover 18 months; impacted account 19 months old, used only 6 months ago.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         },
         {
             "type": "note",
             "spec_version": "2.1",
-            "id": "note--bfe8506b-0430-4800-86c0-be2c64c557c8",
+            "id": "note--d1dd5205-00bd-48d9-bb2c-270f6375aad3",
             "created": "2023-04-19T00:00:00.000Z",
             "modified": "2023-04-19T00:00:00.000Z",
             "content": "Malicious worker uploaded on Jan 21st, attack lasted until mid-Feb with new MyAlgo version release.",
             "object_refs": [
-                "report--64c0360b-868b-44cf-add8-8d9b4eefa12c"
+                "report--98d1f812-7eb1-428e-9e30-98e2e80ed16b"
             ]
         }
     ]

@@ -75,12 +75,36 @@ modified_date = "2023-04-19T00:00:00Z"
 attacker = ThreatActor(
     created=created_date,
     modified=modified_date,
-    name="MyAlgo Attacker",
+    name="LendHub Attacker",
     description=(
-        "On February 20, 2023 and ongoing 2000+ Algorand network users and projects like ",
-        "Algodex, Lofty, AlgoCasino, etc. lost $9.2M+ due to private key compromises.",
+        "On January 12, 2023 LendHub lost $6M due to a misconfiguration",
+        "which left a deprecated token contract live, which allowed attackers to arbitrage them."
     )
 )
+
+attacker_indicator = {}
+
+attacker_indicator["00"] = Indicator(
+    created=created_date,
+    modified=modified_date,
+    valid_from=created_date, # In the future, should be valid from at least the timestamp of the attack
+    name="0x9d0163e76bbcf776001e639d65f573949a53ab03",
+    description="LendHub attacker address",
+    pattern_type="stix",
+    pattern="[x-defi-address:value = '0x9d0163e76bbcf776001e639d65f573949a53ab03' AND x-defi-address:blockchain = 'ethereum']" # Example
+)
+
+relationship_attacker_indicator = {}
+
+for i in range(0, 1):
+    relationship_attacker_indicator[f"{i:02d}"] = Relationship(
+        created=created_date,
+        modified=modified_date,
+        relationship_type="indicates",
+        spec_version="2.1",
+        source_ref=attacker_indicator[f"{i:02d}"].id,
+        target_ref=attacker.id
+    )
 
 ################################################################################
 ##
@@ -92,10 +116,10 @@ attacker = ThreatActor(
 attack_pattern = AttackPattern(
     created=created_date,
     modified=modified_date,
-    name="Potentially compromised CDN API key used.",
-    x_defi_taxonomy_layer="AUX", # Example
-    x_defi_taxonomy_incident_cause="Faulty Operation",
-    x_defi_taxonomy_incident_type="Compromised private key / wallet",
+    name="Deprecated token contract live",
+    x_defi_taxonomy_layer="PRO",
+    x_defi_taxonomy_incident_cause="Unsafe dependency",
+    x_defi_taxonomy_incident_type="Other unsafe DeFi protocol dependency",
     extensions={
         "extension-definition--59cde1e5-2ce1-4732-a09d-596f401ba65b" : {
             'extension_type': 'toplevel-property-extension',
@@ -123,18 +147,18 @@ relationship_threat_actor_attack_pattern = Relationship(
 victim_identity = Identity(
     created=created_date,
     modified=modified_date,
-    name="MyAlgo",
-    description="Wallet of Algorand network",
+    name="LendHub",
+    description="LendHub is the safest decentralized lending platform aiming to facilitate cross-chain lending.",
     identity_class="organization",
     sectors=["financial-services"],
     external_references=[
         ExternalReference(
-            source_name="Algorand Wallet",
-            url="https://wallet.myalgo.com/home"
+            source_name="Twitter",
+            url="https://www.lendhub.online/en"
         ),
         ExternalReference(
-            source_name="Twitter",
-            url="https://twitter.com/myalgo_"
+            source_name="LendHub",
+            url="https://twitter.com/LendHubDefi"
         )
     ]
 )
@@ -174,12 +198,12 @@ relationship_attacker_victim = Relationship(
 incident_report = Report(
     created=created_date,
     modified=modified_date,
-    name="MyAlgo 2023.02.20",
+    name="LendHub 2023.01.12",
     description=(
-        "On February 20, 2023 and ongoing 2000+ Algorand network users and projects like ",
-        "Algodex, Lofty, AlgoCasino, etc. lost $9.2M+ due to private key compromises.",
+        "On January 12, 2023 LendHub lost $6M due to a misconfiguration",
+        "which left a deprecated token contract live, which allowed attackers to arbitrage them."
     ),
-    published="2023-02-20T00:00:00Z", # Example
+    published="2023-01-12T00:00:00Z",
     report_types=["threat-actor", "attack-pattern"], # May vary based on what you have
     object_refs=[
         attacker,
@@ -188,14 +212,14 @@ incident_report = Report(
     external_references=[
         ExternalReference(
             source_name="Twitter",
-            url="https://twitter.com/myalgo_/status/1649427788816842752"
+            url="https://twitter.com/SlowMist_Team/status/1613906590574198784"
         ),
         ExternalReference(
-            source_name="Halborn",
-            url="https://github.com/HalbornSecurity/PublicReports/blob/master/Incident%20Reports/RandLabs_MyAlgo_Wallet_Executive_Summary_Halborn%20.pdf"
+            source_name="Twitter",
+            url="https://twitter.com/LendHubDefi/status/1613846541651030018"
         ),
     ],
-    x_defi_estimated_loss_usd=9200000,
+    x_defi_estimated_loss_usd=6000000,
     extensions={
         "extension-definition--393acb6c-fe64-42b5-92d5-a8ec243c4876" : {
             'extension_type': 'toplevel-property-extension',
@@ -214,14 +238,10 @@ incident_report = Report(
 ################################################################################
 
 comments = [
-    "Attackers abused CDN for man-in-the-middle attack on http://wallet(.)myalgo(.)com webapp.",
-    "Potentially compromised CDN API key used.",
-    "Unclear how API key obtained.",
-    "No evidence of MyAlgo codebase exploitation or vulnerability.",
-    "No evidence of CDN user account compromise.",
-    "CDN audit logs lack evidence of key creation for the attack.",
-    "Logs cover 18 months; impacted account 19 months old, used only 6 months ago.",
-    "Malicious worker uploaded on Jan 21st, attack lasted until mid-Feb with new MyAlgo version release.",
+    "The attack was only possible because two competing versions of the same token were available on the market.",
+    "Specifically the presence of two lBSV cTokens, one of which had been phased out but unfortunately, was not removed from the market entirely.",
+    "This created a discrepancy between the old and new lBSV, with different Comptroller contracts but same pricing in the market, causing a disconnect in the calculation of liabilities between the old and new markets.",
+    "The LendHub hack demonstrates the importance of a clear, comprehensive process for updating smart contracts on the blockchain.",
 ]
 
 incident_note_objects_comments = [
@@ -238,6 +258,8 @@ incident_note_objects_comments = [
 
 BundleofAllObjects = Bundle(
     attacker,
+    attacker_indicator["00"],
+    relationship_attacker_indicator["00"],
     attack_pattern,
     relationship_threat_actor_attack_pattern,
     victim_identity,
@@ -248,14 +270,10 @@ BundleofAllObjects = Bundle(
     incident_note_objects_comments[1],
     incident_note_objects_comments[2],
     incident_note_objects_comments[3],
-    incident_note_objects_comments[4],
-    incident_note_objects_comments[5],
-    incident_note_objects_comments[6],
-    incident_note_objects_comments[7],
     allow_custom=True
 )
 
-with open('../stix-db/2023.02.20.myalgo.json', 'w') as f:
+with open('../stix-db/23.01.12.lendhub.json', 'w') as f:
     f.write(json.dumps(BundleofAllObjects, indent=4, cls=STIXJSONEncoder))
 
 # Count objects by type and print it

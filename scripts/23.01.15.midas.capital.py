@@ -75,11 +75,8 @@ modified_date = "2023-04-19T00:00:00Z"
 attacker = ThreatActor(
     created=created_date,
     modified=modified_date,
-    name="LendHub Attacker",
-    description=(
-        "On January 12, 2023 LendHub lost $6M due to a misconfiguration",
-        "which left a deprecated token contract live, which allowed attackers to arbitrage them."
-    )
+    name="Midas Capital Attacker",
+    description="On January 15, 2023 Midas Capital lost $654K due to a read-only reentrancy vulnerability."
 )
 
 attacker_indicator = {}
@@ -88,15 +85,25 @@ attacker_indicator["00"] = Indicator(
     created=created_date,
     modified=modified_date,
     valid_from=created_date, # In the future, should be valid from at least the timestamp of the attack
-    name="0x9d0163e76bbcf776001e639d65f573949a53ab03",
-    description="LendHub attacker address",
+    name="0x1863b74778cf5e1c9c482a1cdc2351362bd08611", # For example, the address value
+    description="Midas Capital Attacker",
     pattern_type="stix",
-    pattern="[x-defi-address:value = '0x9d0163e76bbcf776001e639d65f573949a53ab03' AND x-defi-address:blockchain = 'ethereum']" # Example
+    pattern="[x-defi-address:value = '0x1863b74778cf5e1c9c482a1cdc2351362bd08611' AND x-defi-address:blockchain = 'polygon']" # Example
+)
+
+attacker_indicator["01"] = Indicator(
+    created=created_date,
+    modified=modified_date,
+    valid_from=created_date, # In the future, should be valid from at least the timestamp of the attack
+    name="0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f", # For example, the address value
+    description="Midas Capital Attacker",
+    pattern_type="stix",
+    pattern="[x-defi-transaction:value = '0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f' AND x-defi-address:blockchain = 'polygon']" # Example
 )
 
 relationship_attacker_indicator = {}
 
-for i in range(0, 1):
+for i in range(0, 2):
     relationship_attacker_indicator[f"{i:02d}"] = Relationship(
         created=created_date,
         modified=modified_date,
@@ -116,10 +123,10 @@ for i in range(0, 1):
 attack_pattern = AttackPattern(
     created=created_date,
     modified=modified_date,
-    name="Deprecated token contract live",
-    x_defi_taxonomy_layer="PRO",
-    x_defi_taxonomy_incident_cause="Unsafe dependency",
-    x_defi_taxonomy_incident_type="Other unsafe DeFi protocol dependency",
+    name="Read-only reentrancy vulnerability",
+    x_defi_taxonomy_layer="SC", # Example
+    x_defi_taxonomy_incident_cause="Untrusted or unsafe calls",
+    x_defi_taxonomy_incident_type="Reentrancy",
     extensions={
         "extension-definition--59cde1e5-2ce1-4732-a09d-596f401ba65b" : {
             'extension_type': 'toplevel-property-extension',
@@ -147,21 +154,46 @@ relationship_threat_actor_attack_pattern = Relationship(
 victim_identity = Identity(
     created=created_date,
     modified=modified_date,
-    name="LendHub",
-    description="LendHub is the safest decentralized lending platform aiming to facilitate cross-chain lending.",
-    identity_class="organization",
-    sectors=["financial-services"],
+    name="Midas Capital",
+    description="Polygon-based lending protocol",
+    identity_class="organization", # Example
+    sectors=["financial-services"], # Example
     external_references=[
         ExternalReference(
-            source_name="Twitter",
-            url="https://www.lendhub.online/en"
+            source_name="Midas Capital",
+            url="https://midascapital.xyz/"
         ),
         ExternalReference(
-            source_name="LendHub",
-            url="https://twitter.com/LendHubDefi"
-        )
+            source_name="Twitter",
+            url="https://twitter.com/MidasCapitalxyz"
+        ),
     ]
 )
+
+victim_address = {}
+
+victim_address["00"] = XDefiAddress(
+    created=created_date,
+    modified=modified_date,
+    name="0x5bca7ddf1bcccb2ee8e46c56bfc9d3cdc77262bc", # Use the address as name
+    description="Midas Capital Readonly Reentrancy Vulnerable Contract",
+    blockchain="polygon", # Not an enum
+    value="0x5bca7ddf1bcccb2ee8e46c56bfc9d3cdc77262bc",
+)
+
+relationship_victim = {}
+
+# Binds addresses to the victim
+for i in range(0, 1):
+    relationship_victim[f"{i:02d}"] = Relationship(
+        created=created_date,
+        modified=modified_date,
+        relationship_type="uses",
+        spec_version="2.1",
+        source_ref=victim_identity.id,
+        target_ref=victim_address[f"{i:02d}"].id,
+        allow_custom=True
+    )
 
 # threat-actor -> victim
 relationship_attack_pattern_victim = Relationship(
@@ -195,15 +227,21 @@ relationship_attacker_victim = Relationship(
 ##
 ################################################################################
 
+
+
+
+
+
+
+
+
+
 incident_report = Report(
     created=created_date,
     modified=modified_date,
-    name="LendHub 2023.01.12",
-    description=(
-        "On January 12, 2023 LendHub lost $6M due to a misconfiguration",
-        "which left a deprecated token contract live, which allowed attackers to arbitrage them."
-    ),
-    published="2023-01-12T00:00:00Z",
+    name="Midas Capital 23.01.15",
+    description="On January 15, 2023 Midas Capital lost $654K due to a read-only reentrancy vulnerability.",
+    published="2023-01-15T00:00:00Z", # Example
     report_types=["threat-actor", "attack-pattern"], # May vary based on what you have
     object_refs=[
         attacker,
@@ -211,15 +249,31 @@ incident_report = Report(
     ],
     external_references=[
         ExternalReference(
-            source_name="Twitter",
-            url="https://twitter.com/SlowMist_Team/status/1613906590574198784"
+            source_name="Phalcon.xyz",
+            url="https://explorer.phalcon.xyz/tx/polygon/0x0053490215baf541362fc78be0de98e3147f40223238d5b12512b3e26c0a2c2f"
+        ),
+        ExternalReference(
+            source_name="Medium",
+            url="https://medium.com/@numencyberlabs/jarvis-network-flash-loan-and-re-entrancy-attack-analysis-a649748f90bb"
+        ),
+        ExternalReference(
+            source_name="Rekt News",
+            url="https://rekt.news/midas-capital-rekt/"
         ),
         ExternalReference(
             source_name="Twitter",
-            url="https://twitter.com/LendHubDefi/status/1613846541651030018"
+            url="https://twitter.com/BeosinAlert/status/1614905399102287872"
+        ),
+        ExternalReference(
+            source_name="Twitter",
+            url="https://twitter.com/BlockSecTeam/status/1614864084956254209"
+        ),
+        ExternalReference(
+            source_name="Twitter",
+            url="https://twitter.com/Jarvis_Network/status/1614723934519234560"
         ),
     ],
-    x_defi_estimated_loss_usd=6000000,
+    x_defi_estimated_loss_usd=654000,
     extensions={
         "extension-definition--393acb6c-fe64-42b5-92d5-a8ec243c4876" : {
             'extension_type': 'toplevel-property-extension',
@@ -238,10 +292,17 @@ incident_report = Report(
 ################################################################################
 
 comments = [
-    "The attack was only possible because two competing versions of the same token were available on the market.",
-    "Specifically the presence of two lBSV cTokens, one of which had been phased out but unfortunately, was not removed from the market entirely.",
-    "This created a discrepancy between the old and new lBSV, with different Comptroller contracts but same pricing in the market, causing a disconnect in the calculation of liabilities between the old and new markets.",
-    "The LendHub hack demonstrates the importance of a clear, comprehensive process for updating smart contracts on the blockchain.",
+    "Midas recently added WMATIC-stMATIC Curve LP token for use as collateral. These tokens have a read-only reentrancy vulnerability which allows the token's virtual price to be manipulated when improperly implemented.",
+    "The read-only reentrancy is a reentrancy scenario where a `view` function is reentered, which in most cases is unguarded as it does not modify the contract’s state.",
+    "More on read-only reentrancy: https://chainsecurity.com/curve-lp-oracle-manipulation-post-mortem/",
+    "More on read-only reentrancy: https://quillaudits.medium.com/decoding-220k-read-only-reentrancy-exploit-quillaudits-30871d728ad5",
+    "The attacker was able to borrow the following assets against the inflated collateral:\n\
+    * jCHF: 273,973\n\
+    * jEUR: 368,058\n\
+    * jGBP: 45,250\n\
+    * agEUR: 45,435\n\
+    * Which were then swapped to ~660k MATIC ($660k) and sent on to Kucoin and Binance.\n",
+    "Message from Midas to the attacker: https://polygonscan.com/tx/0x45e9e4addf8a67700fca8ab7f0fba07019e5ce5a8c630b02fc28c8b6115c66a7"
 ]
 
 incident_note_objects_comments = [
@@ -260,9 +321,13 @@ BundleofAllObjects = Bundle(
     attacker,
     attacker_indicator["00"],
     relationship_attacker_indicator["00"],
+    attacker_indicator["01"],
+    relationship_attacker_indicator["01"],
     attack_pattern,
     relationship_threat_actor_attack_pattern,
     victim_identity,
+    victim_address["00"],
+    relationship_victim["00"],
     relationship_attack_pattern_victim,
     relationship_attacker_victim,
     incident_report,
@@ -270,10 +335,12 @@ BundleofAllObjects = Bundle(
     incident_note_objects_comments[1],
     incident_note_objects_comments[2],
     incident_note_objects_comments[3],
+    incident_note_objects_comments[4],
+    incident_note_objects_comments[5],
     allow_custom=True
 )
 
-with open('../stix-db/2023.01.12.lendhub.json', 'w') as f:
+with open('../stix-db/23.01.15.midas.capital.json', 'w') as f:
     f.write(json.dumps(BundleofAllObjects, indent=4, cls=STIXJSONEncoder))
 
 # Count objects by type and print it
